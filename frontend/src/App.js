@@ -25,7 +25,7 @@ function App() {
         <Router>
           <Switch>
             <Route path={"/todo"}>
-                {localStorage.getItem("user")===null?(<Redirect to={{pathname: "/"}}/>):(<Todo theme={theme} />)}
+  {localStorage.getItem("user")===null || localStorage.getItem("user")==="null"?(<Redirect to={{pathname: "/"}}/>):(<Todo theme={theme} />)}
             </Route>
             <Route exact path={"/"}>
               <Login />
