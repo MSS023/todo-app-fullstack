@@ -292,6 +292,9 @@ img.checked {
 }
 
 @media screen and (max-width: 555px) {
+    .btn-text {
+        width: 90%;
+    }
     .foreground {
         width: 90%;
         margin: 0;
