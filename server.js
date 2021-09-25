@@ -51,8 +51,15 @@ app.route("/login").post((req,res) => {
 app.route("/register").post((req,res) => {
 	var user=req.body.user;
 	var password=req.body.password;
-	var obj=new Todo({user: user,password: password,list: list,active: active});
-	obj.save();
+	Todo.find({user: user,password: password},(err,todo) => {
+		if(err)
+			console.log(err);
+		else if(todo.length==0)
+		{
+			var obj=new Todo({user: user,password: password,list: list,active: active});
+			obj.save();			
+		}
+	})
 });
 
 app.route("/notes/user/:user/password/:password").get((req,res) => {

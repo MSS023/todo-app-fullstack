@@ -14,6 +14,8 @@ function Login(props) {
 	}
 	
 	function handleClick(){
+		if(user.length>0 && pass.length>0)
+		{
 		axios.post("/login",{user:user,password: pass})
 		.then(response => {
 			return response.data;
@@ -27,13 +29,16 @@ function Login(props) {
 			}
 			else
 				alert("please try again");
-		});
+		});}
 	}
 	function handleClick2(){
-		axios.post("/register",{user:user,password: pass})
-		localStorage.setItem("user",user);
-		localStorage.setItem("pass",pass);
-		history.push("/todo");
+		if(user.length>0 && pass.length>0)
+		{
+			axios.post("/register",{user:user,password: pass})
+			localStorage.setItem("user",user);
+			localStorage.setItem("pass",pass);
+			history.push("/todo");
+		}
 	}
 	
 	return<div className="login">
